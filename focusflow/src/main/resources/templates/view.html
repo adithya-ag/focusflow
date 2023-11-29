@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: tni_head" />
+<body>
+<div class="container tbl-container" >
+  <div th:replace="fragments :: tni_menu" />
+  <br>
+  <div class="container tbl-container" style="margin-top: 40px;">
+    <header>
+      <h1>View Document</h1>
+      <p>Displaying the document <span th:text="${fileName}"></span></p>
+    </header>
+
+    <section id="document">
+      <iframe th:src="@{${filePath}}" style="width: 100%; height: 600px; border: none;"></iframe>
+    </section>
+
+    <footer>
+      <p>© 2023 Focus Flow. All rights reserved.</p>
+    </footer>
+  </div>
+</div>
+</body>
+</html>

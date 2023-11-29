@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5" xmlns="http://www.w3.org/1999/html">
+<head th:fragment="tni_head">
+    <meta charset="ISO-8859-1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <title>Focus Flow</title>
+    <style>
+        body {}
+        .container{
+        margin-left:5%;
+        }
+        .tbl-container {
+            max-width: fit-content;
+            max-height: fit-content;
+            padding-right: 30p%;
+        }
+        .tbl-fixed {
+            overflow-x: scroll;
+            overflow-y: scroll;
+            height: fit-content;
+            max-height: 80vh;
+            max-width: 70pz;
+        }
+        table {}
+        table th {
+            position: sticky;
+            top: 0px;
+            background: #5A5A5A;
+            text-align: center;
+            color: #fff;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+        .dtv-footer {
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            right: 0;
+        }
+        .error{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<div th:fragment="tni_menu">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/tni">Focus Flow</a>
+            </div>
+
+                <ul class="nav navbar-nav">
+                    <li><a href="/index">Home</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Inventory Objects<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/exec">App Blocking</a></li>
+                            <li class="divider"></li>
+                            <li><a href="/exec">Test mode</a></li>
+                            <li class="divider"></li>
+
+
+                        </ul>
+                    </li>
+                    <li><a href="/openDocument">Read</a></li>
+                    <li><a href="/chat">Chat</a></li>
+                </ul>
+
+
+
+        </div>
+    </nav>
+</div>
+
+<div th:fragment="tni_modal">
+
+</div>
+
+<div th:fragment="tni_footer" class="dtv-footer" data-role="footer" data-position="fixed">
+    <p>Copyright @ Adithyaa GA</p>
+</div>
+</body>
+</html>

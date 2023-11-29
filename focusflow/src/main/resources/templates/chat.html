@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: tni_head" />
+
+<body>
+
+<div class="container tbl-container">
+    <div th:replace="fragments :: tni_menu" />
+    <br>
+    <div class="container tbl-container" style="margin-top: 40px;">
+
+        <section id="chat">
+            <h2>Chat Interface</h2>
+
+            <div id="messageArea" style="border: 1px solid #ddd; padding: 10px; height: 300px; overflow-y: scroll;">
+                <!-- Display existing messages -->
+                <div th:each="message : ${messages}">
+                    <p th:text="${message}"></p>
+                </div>
+            </div>
+
+            <form action="/send" method="post">
+                <div>
+                    <input type="text" name="message" placeholder="Type your message...">
+                    <button type="submit">Send</button>
+                </div>
+            </form>
+        </section>
+
+        <footer>
+            <p>&copy; 2023 Focus Flow. All rights reserved.</p>
+        </footer>
+    </div>
+</div>
+
+</body>
+</html>

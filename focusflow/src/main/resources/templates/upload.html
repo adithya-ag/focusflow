@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: tni_head" />
+<body>
+<div class="container tbl-container" >
+    <div th:replace="fragments :: tni_menu" />
+    <br>
+    <div class="container tbl-container" style="margin-top: 40px;">
+        <header>
+            <h1>Upload Document</h1>
+            <p>Select a document from your PC to view it in the application</p>
+        </header>
+
+        <section id="upload">
+            <form method="POST" action="/upload" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="file">Choose File</label>
+                    <input type="file" class="form-control-file" id="file" name="file" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Upload</button>
+            </form>
+        </section>
+
+        <footer>
+            <p>© 2023 Focus Flow. All rights reserved.</p>
+        </footer>
+    </div>
+</div>
+</body>
+</html>

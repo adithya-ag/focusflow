@@ -1,0 +1,3 @@
+<manifestPackage>
+  <elevateToAdmin privileges="true" />
+</manifestPackage>

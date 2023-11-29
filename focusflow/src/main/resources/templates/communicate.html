@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: tni_head" />
+
+<body onload="connect()">
+
+<div class="container tbl-container">
+    <div th:replace="fragments :: tni_menu" />
+    <br>
+    <div class="container tbl-container" style="margin-top: 40px;">
+
+        <section id="communication">
+            <h2>Communication Interface</h2>
+            <div id="messageArea" style="border: 1px solid #ddd; padding: 10px; height: 300px; overflow-y: scroll;">
+                <!-- Display existing messages -->
+                <div th:each="message : ${receivedMessages}">
+                    <p th:text="${message}"></p>
+                </div>
+            </div>
+
+            <form onsubmit="sendMessage(); return false;">
+                <div>
+                    <input type="text" id="messageInput" placeholder="Type your message..." required>
+                    <button type="submit">Send Message</button>
+                </div>
+            </form>
+        </section>
+
+        <footer>
+            <p>&copy; 2023 Focus Flow. All rights reserved.</p>
+        </footer>
+    </div>
+</div>
+
+<!-- Thymeleaf template -->
+<script th:inline="javascript">
+    var stompClient = null;
+
+    function connect() {
+        var socket = new SockJS('/ws'); // Change '/ws' to match your StompEndpoint path
+        stompClient = Stomp.over(socket);
+        stompClient.connect({}, function (frame) {
+            console.log('Connected: ' + frame);
+            stompClient.subscribe('/topic/messages', function (message) {
+                showMessage(JSON.parse(message.body));
+            });
+        });
+    }
+
+    function showMessage(message) {
+        // Handle the incoming message and display it in the message area
+        // You can update the HTML content or append new messages as needed
+        var messageArea = document.getElementById('messageArea');
+        messageArea.innerHTML += '<p>' + message + '</p>';
+    }
+
+    function sendMessage() {
+        var messageInput = document.getElementById('messageInput');
+        var message = messageInput.value.trim();
+        if (message !== '') {
+            stompClient.send('/app/send-message', {}, message); // Change '/app/send-message' to match your application destination prefix
+            messageInput.value = '';
+        }
+    }
+</script>
+
+</body>
+</html>
